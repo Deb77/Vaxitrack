@@ -1,5 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const doctorRoutes = require('./routes/doctorRoutes');
+
 const app = express();
 require('dotenv').config();
 
@@ -14,13 +16,6 @@ mongoose.connect(uri, {
     useUnifiedTopology: true
 });
 
-const dummyData = {
-    userName: "Deborah",
-    password:"123456789",
-}
-
-app.get("/", (req, res) => {
-    res.json(dummyData);
-})
+app.use('/doctor', doctorRoutes);
 
 app.listen(port);
