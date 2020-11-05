@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const doctorRoutes = require('./routes/doctorRoutes');
+const parentRoutes = require('./routes/parentRoutes');
 
 const app = express();
 require('dotenv').config();
@@ -17,5 +18,6 @@ mongoose.connect(uri, {
 });
 
 app.use('/doctor', doctorRoutes);
+app.use('/parent', parentRoutes);
 
 app.listen(port);
