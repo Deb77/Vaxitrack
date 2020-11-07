@@ -6,7 +6,7 @@ const doctorSchema = Schema({
     username: { type: String },
     password: { type: String }
 },
-    { timestammp: true }
+    { timestamps: true }
 );
 
 doctorSchema.statics.login = async function (username, password) {

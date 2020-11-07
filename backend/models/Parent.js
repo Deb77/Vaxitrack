@@ -24,7 +24,7 @@ const parentSchema = Schema({
         minlength: [6, 'Minimum password length should be 6 characters'],
     },
 },
-    { timestammp: true }
+    { timestamps: true }
 );
 
 parentSchema.pre('save', async function (next) {

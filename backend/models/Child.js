@@ -19,7 +19,9 @@ const childSchema = Schema({
         type: String,
         required: [true, 'Please select Child Gender']
     }
-});
+},
+    { timestamps: true }
+);
 
 const Child = mongoose.model('child', childSchema);
 
