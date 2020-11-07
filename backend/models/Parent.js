@@ -9,11 +9,11 @@ const emailValidate = (email) => {
 const parentSchema = Schema({
     name: {
         type: String,
-        required: [true, 'Please enter parent name'],
+        required: [true, 'Please enter your name'],
     },
     email: {
         type: String,
-        required: [true, 'Please enter parent email'],
+        required: [true, 'Please enter your email'],
         lowercase: true,
         unique: true,
         validate: [emailValidate, 'Please enter a valid email'],
