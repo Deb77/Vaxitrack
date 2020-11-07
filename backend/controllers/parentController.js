@@ -1,13 +1,5 @@
 const Parent = require('../models/Parent');
-const jwt = require('jsonwebtoken');
-
-const maxAge = 3 * 24 * 60 * 60;
-
-const createToken = (user) => {
-    return jwt.sign({ user }, process.env.JWT_SECRET, {
-        expiresIn: maxAge
-    });
-};
+const authToken = require('../utils/authToken');
 
 const handleErrors = (err) => {
     let errors = { name: '', email: '', password: '' };
@@ -37,7 +29,7 @@ const handleErrors = (err) => {
 module.exports.signup_post = async(req, res) => {
     try {
         const parent = await Parent.create(req.body);
-        const token = createToken(parent);
+        const token = authToken.createToken(parent);
         res.status(201).json({ token: token });
     }
     catch (err) {
@@ -50,7 +42,7 @@ module.exports.login_post = async (req, res) => {
     const { email, password } = req.body;
     try {
         const parent = await Parent.login(email, password);
-        const token = createToken(parent);
+        const token = authToken.createToken(parent);
         res.status(201).json({ token: token });
     }
     catch (err) {

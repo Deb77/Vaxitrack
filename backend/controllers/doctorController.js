@@ -1,7 +1,5 @@
 const Doctor = require('../models/Doctor');
-const jwt = require('jsonwebtoken');
-
-const maxAge = 3 * 24 * 60 * 60;
+const authToken = require('../utils/authToken');
 
 const handleErrors = (err) => {
     let errors = { username: '', password: '' };
@@ -14,17 +12,11 @@ const handleErrors = (err) => {
     return errors;
 }
 
-const createToken = (user) => {
-  return jwt.sign({ user }, process.env.JWT_SECRET, {
-    expiresIn: maxAge
-  });
-};
-
 module.exports.login_post = async (req, res) => {
     const { username, password } = req.body;
     try {
         const doctor = await Doctor.login(username, password);
-        const token = createToken(doctor);
+        const token = authToken.createToken(doctor);
         res.status(201).json({ token: token });
     }
     catch (err) {

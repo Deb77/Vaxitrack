@@ -1,4 +1,3 @@
-const { findByIdAndDelete } = require('../models/Child');
 const Child = require('../models/Child');
 const Vaccine = require('../models/Vaccine');
 const VaccineList = require('../VaccinesList');

@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const childSchema = Schema({
     name: {
         type: String,
-        required: [true, 'Please enter Child Name']
+        required: [true, "Please enter child's name"]
     },
     parentId: {
         type: Schema.Types.ObjectId,
@@ -13,11 +13,11 @@ const childSchema = Schema({
     DOB: {
         type: Date,
         default: Date.now(),
-        required: [true, 'Please enter Date Of Birth']
+        required: [true, "Please enter child's date of birth"]
     },
     gender: {
         type: String,
-        required: [true, 'Please select Child Gender']
+        required: [true, "Please enter child's gender"]
     }
 },
     { timestamps: true }
