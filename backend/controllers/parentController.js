@@ -10,7 +10,7 @@ const createToken = (user) => {
 };
 
 const handleErrors = (err) => {
-    let errors = { parentName: '', email: '', password: '' };
+    let errors = { name: '', email: '', password: '' };
 
     if (err.message === 'incorrect email') {
         errors.email = 'This email is not registered';
@@ -31,7 +31,6 @@ const handleErrors = (err) => {
             errors[properties.path] = properties.message;
         });
     }  
-
     return errors;
 }
 

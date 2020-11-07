@@ -7,7 +7,7 @@ const emailValidate = (email) => {
     return re.test(email);
 }
 const parentSchema = Schema({
-    parentName: {
+    name: {
         type: String,
         required: [true, 'Please enter parent name'],
     },
