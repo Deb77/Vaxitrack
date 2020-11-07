@@ -6,6 +6,7 @@ const emailValidate = (email) => {
     const re = /\S+@\S+\.\S+/
     return re.test(email);
 }
+
 const parentSchema = Schema({
     name: {
         type: String,
