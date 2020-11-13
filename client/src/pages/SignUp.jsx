@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
-import { signUpService } from '../services/signUpService';
+import * as authActionCreators from '../actions/auth';
+import { connect } from 'react-redux';
 import { Container, Form, Button } from 'react-bootstrap';
+import { bindActionCreators } from 'redux';
+import axios from 'axios';
 
-const SignUp = () => {
+const SignUp = ({ authActions }) => {
     const [name, setName] = useState("");
     const [email,setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const onSubmit = (e) => {
         e.preventDefault();
-        signUpService.post('parent/signup', { name, email, password })
+        // authActions.register({ name, email, password });
+        axios.post('http://localhost:5000/parent/signup')
             .then(res => console.log(res))
             .catch(err => console.log(err));
     }
@@ -40,4 +44,8 @@ const SignUp = () => {
     )
 }
 
-export default SignUp
+const mapDispatchToProps = dispatch => ({
+    authActions: bindActionCreators(authActionCreators, dispatch)
+})
+
+export default connect(null, mapDispatchToProps)(SignUp);
