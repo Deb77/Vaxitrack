@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as authActionCreators from '../actions/auth';
+import { connect } from 'react-redux';
 import { Container, Form, Button } from 'react-bootstrap';
+import * as authActionCreators from '../actions/auth';
 
 const Login = ({ authActions }) => {
     const [email, setEmail] = useState("");

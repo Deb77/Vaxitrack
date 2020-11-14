@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import * as authActionCreators from '../actions/auth';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Container, Form, Button } from 'react-bootstrap';
-import { bindActionCreators } from 'redux';
-import axios from 'axios';
+import * as authActionCreators from '../actions/auth';
 
 const SignUp = ({ authActions }) => {
     const [name, setName] = useState("");
@@ -12,14 +11,16 @@ const SignUp = ({ authActions }) => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        // authActions.register({ name, email, password });
-        axios.post('http://localhost:5000/parent/signup')
-            .then(res => console.log(res))
-            .catch(err => console.log(err));
+        authActions.register({ name, email, password });
+    }
+
+    const logout = () => {
+        authActions.logout();
     }
 
     return (
         <Container>
+            <Button  onClick={logout}>LogOut</Button>
             <Form onSubmit={onSubmit}>
                 <Form.Group controlId="formBasicName">
                     <Form.Label>Name</Form.Label>
