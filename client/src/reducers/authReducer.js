@@ -20,35 +20,35 @@ const authReducer = (state = initialState, action) =>  {
             return {
                 ...state,
                 token: action.payload.token,
+                isAuthenticated: true,
                 errors: {},
-                isAuthenticated: true
             }
         case SIGNUP_FAIL:
             return {
                 ...state,
-                errors: action.payload.errors,
-                isAuthenticated:false
+                isAuthenticated:false,
+                errors: action.payload.errors
             }
         case LOGIN_SUCCESS:
             localStorage.setItem('token', action.payload.token);
             return {
                 ...state,
-                errors:{},
                 token: action.payload.token,
-                isAuthenticated: true
+                isAuthenticated: true,
+                errors:{}
             }
         case LOGIN_FAIL:
             return {
                 ...state,
+                isAuthenticated: false,
                 errors: action.payload.errors,
-                isAuthenticated: false
             }
         case LOGOUT:
             localStorage.removeItem('token');
             return {
-                ...state,
                 token: null,
                 isAuthenticated: false,
+                erros:{},
                 user: null                
             }
         default: return state;

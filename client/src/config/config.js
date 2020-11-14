@@ -1,3 +1,1 @@
-module.exports = {
-    baseUrl: 'https://vaxitrack.herokuapp.com/'
-}
+export const baseUrl = process.env.REACT_APP_BASE_URL;
