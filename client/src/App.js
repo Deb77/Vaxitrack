@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import { Provider } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import store from './store';
@@ -15,6 +15,8 @@ const App = () => {
   return (
     <Provider store={store}>
       <Router>
+        <p><Link to="/loign">Login</Link></p>
+        <p><Link to= "/signup">Signup</Link></p>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
