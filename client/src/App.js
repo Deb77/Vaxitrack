@@ -10,6 +10,7 @@ import Parent from './pages/Parent';
 import Doctor from './pages/Doctor';
 import Child from './pages/Child';
 import Admin from './pages/Admin';
+import PrivateRoute from './PrivateRoute';
 
 const App = () => {
   return (
@@ -19,11 +20,11 @@ const App = () => {
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/parent" component={Parent} />
-          <Route exact path="/parent/child" component={Child} />
-          <Route exact path="/admin" component={Admin} />
-          <Route exact path="/admin" component={Doctor} />
-          <Route exact path="/admin/child" component={Child} />
+          <PrivateRoute exact path="/parent" component={Parent} />
+          <PrivateRoute exact path="/parent/child" component={Child} />
+          <PrivateRoute exact path="/admin" component={Admin} />
+          <PrivateRoute exact path="/admin/home" component={Doctor} />
+          <PrivateRoute exact path="/admin/child" component={Child} />
         </Switch>
       </Router>
     </Provider>
