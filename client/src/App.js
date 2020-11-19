@@ -2,6 +2,8 @@ import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ParentPrivateRoute from './ParentPrivateRoute';
+import AdminPrivateRoute from './AdminPrivateRoutes';
 import store from './store';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -10,7 +12,6 @@ import Parent from './pages/Parent';
 import Doctor from './pages/Doctor';
 import Child from './pages/Child';
 import Admin from './pages/Admin';
-import PrivateRoute from './PrivateRoute';
 
 const App = () => {
   return (
@@ -20,11 +21,11 @@ const App = () => {
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignUp} />
-          <PrivateRoute exact path="/parent" component={Parent} />
-          <PrivateRoute exact path="/parent/child" component={Child} />
-          <PrivateRoute exact path="/admin" component={Admin} />
-          <PrivateRoute exact path="/admin/home" component={Doctor} />
-          <PrivateRoute exact path="/admin/child" component={Child} />
+          <Route exact path="/admin" component={Admin} />
+          <ParentPrivateRoute exact path="/parent" component={Parent} />
+          <ParentPrivateRoute exact path="/parent/child" component={Child} />
+          <AdminPrivateRoute exact path="/admin/home" component={Doctor} />
+          <AdminPrivateRoute exact path="/admin/child" component={Child} />
         </Switch>
       </Router>
     </Provider>
