@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Container, Form, Button } from 'react-bootstrap';
 import * as authActionCreators from '../actions/auth';
 
-const SignUp = ({ authActions, auth }) => {
+const SignUp = ({ authActions, auth}) => {
     const [name, setName] = useState("");
     const [email,setEmail] = useState("");
     const [password, setPassword] = useState("");
