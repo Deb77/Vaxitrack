@@ -2,8 +2,10 @@ import './App.css';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import { Provider } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ParentPrivateRoute from './ParentPrivateRoute';
+import AdminPrivateRoute from './AdminPrivateRoutes';
 import store from './store';
-import Home from './pages/Home';
+import Home from './pages';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Parent from './pages/Parent';
@@ -21,11 +23,11 @@ const App = () => {
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/parent" component={Parent} />
-          <Route exact path="/parent/child" component={Child} />
           <Route exact path="/admin" component={Admin} />
-          <Route exact path="/admin" component={Doctor} />
-          <Route exact path="/admin/child" component={Child} />
+          <ParentPrivateRoute exact path="/parent" component={Parent} />
+          <ParentPrivateRoute exact path="/parent/child" component={Child} />
+          <AdminPrivateRoute exact path="/admin/home" component={Doctor} />
+          <AdminPrivateRoute exact path="/admin/child" component={Child} />
         </Switch>
       </Router>
     </Provider>

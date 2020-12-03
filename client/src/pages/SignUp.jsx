@@ -1,13 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Container, Form, Button } from 'react-bootstrap';
 import * as authActionCreators from '../actions/auth';
 
-const SignUp = ({ authActions }) => {
+const SignUp = ({ authActions, auth}) => {
     const [name, setName] = useState("");
     const [email,setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [redirect, setRedirect] = useState(false);
+
+    useEffect(() => {
+        setRedirect(auth);
+    }, [auth])
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -19,7 +25,10 @@ const SignUp = ({ authActions }) => {
     }
 
     return (
-        <Container>
+        redirect ? (
+            <Redirect to="/parent"/>
+        ) : (
+            <Container>
             <Button  onClick={logout}>LogOut</Button>
             <Form onSubmit={onSubmit}>
                 <Form.Group controlId="formBasicName">
@@ -41,12 +50,15 @@ const SignUp = ({ authActions }) => {
                     Submit
                 </Button>
             </Form>
-        </Container>    
+        </Container>
+        )    
     )
 }
+
+const mapStateToProps = ({ auth }) => ({ auth: auth.isAuthenticated });
 
 const mapDispatchToProps = dispatch => ({
     authActions: bindActionCreators(authActionCreators, dispatch)
 })
 
-export default connect(null, mapDispatchToProps)(SignUp);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

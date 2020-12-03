@@ -6,50 +6,56 @@ import {
     LOGOUT
 } from '../constants/auth';
 
+const token = localStorage.getItem('token');
+
 const initialState = {
-    token: localStorage.getItem('token'),
-    isAuthenticated: true,
+    token,
+    user: localStorage.getItem('user'),
+    isAuthenticated: token ? true : false,
     errors: {},
-    user: null,
 };
 
-const authReducer = (state = initialState, action) =>  {
-    switch (action.type) {
+const authReducer = (state = initialState, { type, payload }) => {
+    switch (type) {
         case SIGNUP_SUCCESS:
-            localStorage.setItem('token', action.payload.token);
+            localStorage.setItem('token', payload.token);
+            localStorage.setItem('user', payload.user);
             return {
                 ...state,
-                token: action.payload.token,
+                token: payload.token,
+                user: payload.user,
                 isAuthenticated: true,
-                errors: {},
+                errors: {}
             }
         case SIGNUP_FAIL:
             return {
                 ...state,
                 isAuthenticated:false,
-                errors: action.payload.errors
+                errors: payload.errors
             }
         case LOGIN_SUCCESS:
-            localStorage.setItem('token', action.payload.token);
+            localStorage.setItem('token', payload.token);
+            localStorage.setItem('user', payload.user);
             return {
                 ...state,
-                token: action.payload.token,
+                token: payload.token,
+                user: payload.user,
                 isAuthenticated: true,
-                errors:{}
+                errors: {},
             }
         case LOGIN_FAIL:
             return {
                 ...state,
                 isAuthenticated: false,
-                errors: action.payload.errors,
+                errors: payload.errors,
             }
         case LOGOUT:
             localStorage.removeItem('token');
             return {
                 token: null,
+                user: null,
                 isAuthenticated: false,
-                errors:{},
-                user: null                
+                errors:{}           
             }
         default: return state;
     }

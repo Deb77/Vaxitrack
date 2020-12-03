@@ -17,7 +17,7 @@ module.exports.login_post = async (req, res) => {
     try {
         const doctor = await Doctor.login(username, password);
         const token = authToken.createToken(doctor);
-        res.status(201).json({ token: token });
+        res.status(201).json({ token: token, user:doctor._id });
     }
     catch (err) {
         const errors = handleErrors(err);

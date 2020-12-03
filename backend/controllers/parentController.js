@@ -30,7 +30,7 @@ module.exports.signup_post = async(req, res) => {
     try {
         const parent = await Parent.create(req.body);
         const token = authToken.createToken(parent);
-        res.status(201).json({ token: token });
+        res.status(201).json({ token: token, user: parent._id });
     }
     catch (err) {
         const erros = handleErrors(err);
@@ -43,7 +43,7 @@ module.exports.login_post = async (req, res) => {
     try {
         const parent = await Parent.login(email, password);
         const token = authToken.createToken(parent);
-        res.status(201).json({ token: token });
+        res.status(201).json({ token: token, user: parent._id });
     }
     catch (err) {
         const errors = handleErrors(err);
