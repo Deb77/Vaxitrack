@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { Title, Underline, TitleBody } from '../SectionElements';
+import { ContactContainer } from './ContactSectionElements';
 import {
-    ContactContainer,
     Form,
     TextField,
     MessageField,
     Button
-} from './ContactSectionElements';
+} from '../FormElements';
 
 const ContactSection = () => {
     const [name, setName] = useState("");

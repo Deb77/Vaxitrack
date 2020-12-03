@@ -1,9 +1,17 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Container, Form, Button } from 'react-bootstrap';
 import * as authActionCreators from '../actions/auth';
-import { Redirect } from 'react-router-dom';
+import {
+    FormContainer,
+    SignUpRedirect,
+    Form,
+    TextField,
+    PasswordField,
+    Button
+} from '../components/FormElements';
 
 const Login = ({ authActions, auth }) => {
     const [email, setEmail] = useState("");
@@ -23,26 +31,29 @@ const Login = ({ authActions, auth }) => {
         redirect ? (
             <Redirect to = "/parent"/>
         ) : (
-                <Container>
-                    <Form onSubmit={onSubmit}>
-                        <Form.Group controlId="formBasicEmail">
-                            <Form.Label>Email address</Form.Label>
-                            <Form.Control type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)}/>
-                            <Form.Text className="text-muted">
-                                We'll never share your email with anyone else.
-                            </Form.Text>
-                        </Form.Group>
-                        <Form.Group controlId="formBasicPassword">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
-                        </Form.Group>
-                        <Button variant="primary" type="submit">
+                <FormContainer>
+                    <Form user={true} onSubmit={onSubmit}>
+                        <TextField
+                            placeholder="Enter email..."
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <PasswordField
+                            placeholder="Enter password"
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <Button user={true} variant="primary" type="submit">
                             Submit
                         </Button>
+                        <SignUpRedirect to="/signup">Not Registered? SignUp</SignUpRedirect>
                     </Form>
-                </Container >
+                </FormContainer >
         )
     )
+}
+
+Login.propTypes = {
+    authActions: PropTypes.object,
+    auth: PropTypes.bool
 }
 
 const mapStateToProps = ({ auth }) => ({ auth: auth.isAuthenticated });

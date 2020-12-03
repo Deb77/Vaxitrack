@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import {
     CardContainer,
     CardTitle,
@@ -25,6 +26,12 @@ const Card = ({ title, description, link }) => {
             </BtnWrapper>
         </CardContainer>
     )
+}
+
+Card.propTypes = {
+    title: PropTypes.string,
+    description: PropTypes.string,
+    link: PropTypes.string
 }
 
 export default Card

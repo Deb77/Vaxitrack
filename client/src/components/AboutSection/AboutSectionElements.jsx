@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const AboutContainer = styled.div`
     height: calc(100vh - 80px);
     font-size: 1.5rem;
-    color: ${props=> props.theme.colors.secondary};
+    color: #fff;
     padding: 3%;
 
     @media screen and ( max-width: 1300px ){
