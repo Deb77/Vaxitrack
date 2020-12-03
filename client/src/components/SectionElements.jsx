@@ -13,7 +13,7 @@ export const Title = styled.div`
 export const Underline = styled.div`
     width: 70px;
     height: 3px;
-    background: #a43f49;
+    background: ${props=> props.theme.colors.primary};
     margin: 0 auto;
 `
 

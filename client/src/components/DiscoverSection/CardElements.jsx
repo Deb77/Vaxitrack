@@ -50,21 +50,21 @@ export const Button = styled.a`
     text-decoration: none;
     text-align: center;
     font-weight: 600;
-    color: #fff;
+    color: ${props=> props.theme.colors.secondary};
     padding: 5px;
     margin: 10px;
-    border: 1px solid #fff;
+    border: 1px solid ${props=> props.theme.colors.secondary};
     border-radius: 2px;
 
     &: hover{
-        color: #a43f49;
-        border: 1px solid #a43f49;
+        color: ${props=> props.theme.colors.primary};
+        border: 1px solid ${props=> props.theme.colors.primary};
         text-decoration: none;
     }
 
     ${CardContainer}:hover & {
-    color: #a43f49;
-    border: 1px solid #a43f49;
+    color: ${props=> props.theme.colors.primary};
+    border: 1px solid ${props=> props.theme.colors.primary};
     text-decoration: none;
     }
 `

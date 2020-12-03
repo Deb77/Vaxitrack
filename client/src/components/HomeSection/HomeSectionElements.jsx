@@ -7,7 +7,7 @@ export const HomeContainer = styled.section`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #fff;
+    color: ${props=> props.theme.colors.secondary};
 `
 export const Text = styled.p`
     text-align: center;

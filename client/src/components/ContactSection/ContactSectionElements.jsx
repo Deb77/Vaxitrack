@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const ContactContainer = styled.section`
     padding: 3%;
-    color: #fff;
+    color: ${props=> props.theme.colors.secondary};
     font-size: 1.5rem;
     display: flex;
     flex-direction: column;
@@ -33,10 +33,10 @@ export const Form = styled.form`
 const sharedStyle = css`
     width: 100%;
     padding: 10px 20px;
-    border: 1px solid #fff;
+    border: 1px solid ${props=> props.theme.colors.secondary};
     margin: 10px;
     background-color: rgba(250,250,250,0.1);
-    color: #fff;
+    color: ${props=> props.theme.colors.secondary};
 `
 export const TextField = styled.input.attrs({
     type: "text"
@@ -53,16 +53,15 @@ export const Button = styled.button`
     max-width: 200px;
     font-weight: bold;
     text-align: center;
-    background: #fff;
     text-transform: uppercase;
-    color: #a43f49;
+    color: ${props=> props.theme.colors.primary};
     margin: 10px;
     padding: 10px;
 
     &: hover{
 
-        color: #fff;
-        background: #a43f49;
+        color: ${props=> props.theme.colors.secondary};    
+        background: ${props=> props.theme.colors.primary};
     }
 
     @media screen and ( max-width: 1000px ){

@@ -8,7 +8,7 @@ export const SidebarContainer = styled.aside`
     z-index: 999;
     width: 100%;
     height: 100vh;
-    background: #a43f49;
+    background: ${props=> props.theme.colors.primary};
     display: grid;
     align-items: center;
     top: 0;
@@ -20,7 +20,7 @@ export const SidebarContainer = styled.aside`
 `
 
 export const CloseIcon = styled(FaTimes)`
-    color: #fff;
+    color: ${props=> props.theme.colors.secondary};
 `
 
 export const Icon = styled.div`
@@ -34,7 +34,7 @@ export const Icon = styled.div`
 `
 
 export const SidebarWrapper = styled.div`
-    color: #fff;
+    color: ${props=> props.theme.colors.secondary};
 `
 
 export const SidebarMenu = styled.ul`
@@ -57,7 +57,7 @@ export const SidebarLink = styled(LinkS)`
     list-style: none;
     transition: 0.2s ease-in-out;
     text-decoration: none;
-    color: #fff;
+    color: ${props=> props.theme.colors.secondary};
     cursor: pointer;
 
     &:hover{
@@ -78,7 +78,7 @@ export const SidebarRoute = styled(LinkR)`
     white-space: nowrap;
     padding: 16px 64px;
     font-weight: bold;
-    color: #fff;
+    color: ${props=> props.theme.colors.secondary};
     font-size: 16px;
     outline: none;
     border: none;
@@ -88,7 +88,7 @@ export const SidebarRoute = styled(LinkR)`
 
     &:hover {
         transition: all 0.2s ease-in-out;
-        background: #fff;
+        background: ${props=> props.theme.colors.secondary};
         color: #000;
         text-decoration: none;
     }

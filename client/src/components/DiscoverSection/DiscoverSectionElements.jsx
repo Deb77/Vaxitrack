@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const DiscoverContainer = styled.section`
     padding: 3%;
     min-height: 100vh;
-    color: #fff;
+    color: ${props=> props.theme.colors.secondary};
     font-size: 1.5rem;
     @media screen and ( max-width: 1300px ){
         font-size: 1.3rem;
