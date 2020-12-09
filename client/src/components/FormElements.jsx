@@ -86,16 +86,23 @@ export const Button = styled.button`
         font-size: 1.1rem;
     }
 `
-
-export const SignUpRedirect = styled(Link)`
+export const sharedStyle2 = css`
     text-align: right;
     color: ${props=> props.theme.colors.secondary}!important;
     font-weight: 100;
     text-decoration: underline;
+`
+export const SignUpRedirect = styled(Link)`
+    ${sharedStyle2}
 `
 
 export const Error = styled.div`
     color: ${props=> props.theme.colors.error};
     font-weight: 300;
     font-size: 1rem;
+`
+
+export const PasswordLink = styled.p`
+    ${sharedStyle2}
+    cursor: pointer;
 `

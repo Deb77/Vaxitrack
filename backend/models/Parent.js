@@ -24,6 +24,8 @@ const parentSchema = Schema({
         required: [true, 'Please enter a password'],
         minlength: [6, 'Minimum password length should be 6 characters'],
     },
+    resetPasswordToken: { type: String },
+    resetPasswordExpires: { type: String }
 },
     { timestamps: true }
 );

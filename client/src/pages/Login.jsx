@@ -7,12 +7,14 @@ import * as authActionCreators from '../actions/auth';
 import {
     FormContainer,
     SignUpRedirect,
+    PasswordLink,
     Form,
     TextField,
     PasswordField,
     Button,
     Error
 } from '../components/FormElements';
+import { userService } from '../services/userService';
 
 const Login = ({ authActions, auth, errors }) => {
     const [email, setEmail] = useState("");
@@ -22,6 +24,13 @@ const Login = ({ authActions, auth, errors }) => {
     useEffect(() => {
         setRedirect(auth);
     }, [auth])
+
+    const onClick = () => {
+        userService.post('parent/forgotPassword', {
+            email
+        }).then(({ data }) => alert(data))
+        .catch(err => alert(err))
+    }
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -47,6 +56,7 @@ const Login = ({ authActions, auth, errors }) => {
                         <Button user={true} variant="primary" type="submit">
                             Submit
                         </Button>
+                        <PasswordLink onClick={onClick}>Forgot Password?</PasswordLink>
                         <SignUpRedirect to="/signup">Not Registered? SignUp</SignUpRedirect>
                     </Form>
                 </FormContainer >
