@@ -5,7 +5,8 @@ const theme = {
     colors: {
         primary: "#a43f49",
         secondary: "#fff",
-        disabled: "#333"
+        disabled: "#333",
+        error: "#CF6679"
     },
 }
 

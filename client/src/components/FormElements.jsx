@@ -14,15 +14,17 @@ export const FormContainer = styled.div`
     padding: 10% 0;
     color: #fff;
 
-     @media screen and ( max-width:700px ){
+    @media screen and ( max-width:700px ){
         padding: 30% 0;
     }    
 `
 
 export const Form = styled.form`
     width: 50%;
+    max-height: 600px;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     font-size: 1.2rem;
     padding: ${props => props.user?'5%':'0'};
     border-radius: ${props => props.user?'15px':'0'};
@@ -41,7 +43,7 @@ const sharedStyle = css`
     width: 100%;
     padding: 10px 20px;
     border: 1px solid ${props=> props.theme.colors.secondary};
-    margin: 10px;
+    margin: ${props => props.user?'10px':'0px'};
     background-color: rgba(250,250,250,0.1);
     color: ${props=> props.theme.colors.secondary};
 `
@@ -71,7 +73,7 @@ export const Button = styled.button`
     border-radius: 5px;
     text-decoration: none;
     color: ${props=> props.theme.colors.primary};
-    margin: 10px;
+    margin: 10px 0;
     padding: 10px;
 
     &: hover{
@@ -87,8 +89,13 @@ export const Button = styled.button`
 
 export const SignUpRedirect = styled(Link)`
     text-align: right;
-    color: #fff!important;
+    color: ${props=> props.theme.colors.secondary}!important;
     font-weight: 100;
     text-decoration: underline;
-    
+`
+
+export const Error = styled.div`
+    color: ${props=> props.theme.colors.error};
+    font-weight: 300;
+    font-size: 1rem;
 `

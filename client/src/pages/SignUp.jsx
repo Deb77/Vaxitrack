@@ -10,10 +10,11 @@ import {
     Form,
     TextField,
     PasswordField,
-    Button
+    Button,
+    Error
 } from '../components/FormElements';
 
-const Login = ({ authActions, auth }) => {
+const Login = ({ authActions, auth, errors }) => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -38,14 +39,17 @@ const Login = ({ authActions, auth }) => {
                             placeholder="Enter name..."
                             onChange={(e) => setName(e.target.value)}
                         />
+                        <Error>{errors.name}</Error>
                         <TextField
                             placeholder="Enter email..."
                             onChange={(e) => setEmail(e.target.value)}
                         />
+                        <Error>{errors.email}</Error>
                         <PasswordField
                             placeholder="Enter password"
                             onChange={(e) => setPassword(e.target.value)}
                         />
+                        <Error>{errors.password}</Error>
                         <Button user={true} variant="primary" type="submit">
                             Submit
                         </Button>
@@ -58,10 +62,11 @@ const Login = ({ authActions, auth }) => {
 
 Login.propTypes = {
     authActions: PropTypes.object,
-    auth: PropTypes.bool
+    auth: PropTypes.bool,
+    errors: PropTypes.object
 }
 
-const mapStateToProps = ({ auth }) => ({ auth: auth.isAuthenticated });
+const mapStateToProps = ({ auth }) => ({ auth: auth.isAuthenticated, errors: auth.errors });
 
 const mapDispatchToProps = dispatch => ({
     authActions: bindActionCreators(authActionCreators, dispatch)
