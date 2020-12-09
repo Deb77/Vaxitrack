@@ -31,21 +31,25 @@ const ContactSection = () => {
             <Form onSubmit={onSubmit}>
                 <TextField
                     value={name}
+                    home
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Your name..."
                 />
                 <TextField
                     value={email}
+                    home
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Your email..."
                 />
                 <TextField
                     value={subject}
+                    home
                     onChange={(e) => setSubject(e.target.value)}
                     placeholder="Subject..."
                 />
                 <MessageField
                     value={message}
+                    home
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder="Your message..."
                     rows="5"

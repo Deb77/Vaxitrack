@@ -21,6 +21,7 @@ export const FormContainer = styled.div`
 
 export const Form = styled.form`
     width: 50%;
+    min-height: 450px;
     max-height: 600px;
     display: flex;
     flex-direction: column;
@@ -43,7 +44,7 @@ const sharedStyle = css`
     width: 100%;
     padding: 10px 20px;
     border: 1px solid ${props=> props.theme.colors.secondary};
-    margin: ${props => props.user?'10px':'0px'};
+    margin: ${props => props.home?'10px':'0px'};
     background-color: rgba(250,250,250,0.1);
     color: ${props=> props.theme.colors.secondary};
 `

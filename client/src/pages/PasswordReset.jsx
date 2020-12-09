@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { PasswordField, Button } from '../components/FormElements';
 import { userService } from '../services/userService';
@@ -23,7 +24,7 @@ const PasswordReset = (props) => {
     const [id, setId] = useState("");
 
     useEffect(() => {
-        userService.post('parent/checkToken', {
+        userService.post('checkToken', {
             resetPasswordToken: props.match.params.token
         })
             .then(({ data }) => {
@@ -35,7 +36,7 @@ const PasswordReset = (props) => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        userService.put('parent/updatePassword', {
+        userService.put('updatePassword', {
             id,
             password,
         })
@@ -60,6 +61,10 @@ const PasswordReset = (props) => {
             }
         </>
     )
+}
+
+PasswordReset.propTypes = {
+    props: PropTypes.object
 }
 
 export default PasswordReset

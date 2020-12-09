@@ -26,9 +26,16 @@ const Login = ({ authActions, auth, errors }) => {
     }, [auth])
 
     const onClick = () => {
-        userService.post('parent/forgotPassword', {
+        userService.post('forgotPassword', {
             email
-        }).then(({ data }) => alert(data))
+        }).then(({ data }) => {
+            if (data.message === 'Please type in an email') {
+                alert(data.message)
+            }
+            else {
+                alert(data);
+            }
+        })
         .catch(err => alert(err))
     }
 

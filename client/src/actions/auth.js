@@ -8,7 +8,7 @@ import {
 import { userService } from '../services/userService';
 
 export const register = body => dispatch => 
-    userService.post('parent/signup', body)
+    userService.post('signup', body)
         .then(res => 
             dispatch({
                 type: SIGNUP_SUCCESS,
@@ -23,7 +23,7 @@ export const register = body => dispatch =>
         );
 
 export const login = body => dispatch => 
-    userService.post('parent/login', body)
+    userService.post('login', body)
         .then(res =>
             dispatch({
                 type: LOGIN_SUCCESS,

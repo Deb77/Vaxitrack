@@ -7,9 +7,9 @@ export const userService = {
 }
 
 function post(apiEndpoint, payload) {
-    return axios.post(baseUrl + apiEndpoint,payload)    
+    return axios.post(baseUrl + 'parent/' + apiEndpoint,payload)    
 }
 
 function put(apiEndpoint, payload) {
-    return axios.put(baseUrl + apiEndpoint,payload)    
+    return axios.put(baseUrl + 'parent/' + apiEndpoint,payload)    
 }
