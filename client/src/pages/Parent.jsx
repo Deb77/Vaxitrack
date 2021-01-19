@@ -1,31 +1,34 @@
-import React, { useState, useEffect } from 'react'
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import {
-    FormContainer,
-    TextField
-} from '../components/FormElements';
+import React, { useEffect } from 'react'
+import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as childrenActionCreators from '../actions/children';
+import ParentForm from '../components/ParentForm';
 
-const ParentForm = () => {
-
-}
-
-const Parent = () => {
-    const [name, setName] = useState("");
-    const [DOB, setDOB] = useState(new Date());
+const Parent = ({ parentId, children, childrenActions }) => {
+    useEffect(() => {
+        childrenActions.fetchChildren(parentId)
+    })
 
     return (
-        <FormContainer>
-            <TextField
-                value={name}
-                onChange={e => setName(e.target.value)}
-            />
-            <DatePicker
-                selected={DOB}
-                onChange={date => setDOB(date)}
-            />
-        </FormContainer>
+        <>
+            {children.length>0 ? <p>HI</p>:<ParentForm/>}
+        </>
     )
 }
 
-export default Parent
+Parent.propType = {
+    parentId: PropTypes.string,
+    children: PropTypes.array
+}
+
+const mapStateToProps = ({ auth, children }) => ({
+    parentId: auth.user,
+    children: children.records
+})
+
+const mapDispatchToProps = dispatch => ({
+    childrenActions: bindActionCreators(childrenActionCreators, dispatch)
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Parent)
