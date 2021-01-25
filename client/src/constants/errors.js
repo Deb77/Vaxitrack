@@ -1,0 +1,1 @@
+export const GET_ERRORS = "VAXITRACK/ERRORS/GET_ERRORS";

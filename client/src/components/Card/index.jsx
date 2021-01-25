@@ -8,7 +8,7 @@ import {
     Button,
 } from './CardElements';
 
-const Card = ({ title, description, link }) => {
+const Card = ({ title, description, link, gender, DOB, btnText }) => {
     return (
         <CardContainer>
             <div>
@@ -16,12 +16,14 @@ const Card = ({ title, description, link }) => {
                     {title}
                 </CardTitle>
                 <CardBody>
+                    {gender ? (<p>Gender: {gender}</p>) : null}
+                    {DOB ? (<p>Date of Birth: {DOB.split('T')[0]}</p>) : null}
                     {description}
                 </CardBody>
             </div>
             <BtnWrapper>
                 <Button href={link} target="_blank">
-                    Learn More
+                    {btnText}
                 </Button>
             </BtnWrapper>
         </CardContainer>

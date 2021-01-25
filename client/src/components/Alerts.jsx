@@ -1,16 +1,25 @@
 import React, { useEffect, Fragment } from 'react'
+import PropTypes from "prop-types";
+import { connect } from 'react-redux';
 import { useAlert } from 'react-alert'
 
-const Alerts = () => {
+const Alerts = ({ errors }) => {
     const alert = useAlert()
-    
+
     useEffect(() => {
-        alert.show()
-    }, [alert])
+        if (errors.msg !== "")
+            alert.show(errors.msg)
+    }, [alert,errors])
 
     return (
         <Fragment/>
     )
 }
 
-export default Alerts
+Alerts.propTypes = {
+    errors: PropTypes.object
+}
+
+const mapStateToProps = ({ errors }) => ({ errors });
+
+export default connect(mapStateToProps)(Alerts);

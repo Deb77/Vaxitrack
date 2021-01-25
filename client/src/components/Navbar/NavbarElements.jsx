@@ -27,11 +27,18 @@ export const NavbarContainer = styled.div`
     max-width: 1100px;
 `
 
-export const NavLogo = styled.div`
+export const NavLogo = styled(LinkR)`
+    color:#fff;
+    text-decoration:none;
     font-size: 2rem;
     font-family: Lobster;
     cursor: pointer;
     justify-self: flex-start;
+
+    &: hover{
+        color:#fff;
+        text-decoration:none;
+    }
 `
 
 export const MobileIcon = styled.div`
@@ -45,6 +52,19 @@ export const MobileIcon = styled.div`
         transform: translate(-100%, 35%);
         font-size: 1.8rem;
         cursor: pointer;
+    }
+`
+
+export const ProfileIcon = styled.div`
+    font-size: 1.8rem;
+    cursor: pointer;
+    margin: auto 0;
+    @media screen and (max-width: 1200px){
+        display: block;
+        position: absolute;
+        right: 0;
+        top:0;
+        transform: translate(-100%, 35%);
     }
 `
 

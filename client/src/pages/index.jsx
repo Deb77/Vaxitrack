@@ -7,8 +7,7 @@ import AboutSection from '../components/AboutSection';
 import DiscoverSection from '../components/DiscoverSection';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer'; 
-import HomeImage from '../assets/Home.jpg'
-import Alerts from '../components/Alerts';
+import HomeImage from '../assets/Home.jpg';
 
 const Home = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -28,7 +27,6 @@ const Home = () => {
     return (
         <>
             <HomePageWrapper>
-                <Alerts/>
                 <Sidebar isOpen={isOpen} toggle={toggle}/>
                 <Navbar toggle={toggle} />
                 <HomeSection/>

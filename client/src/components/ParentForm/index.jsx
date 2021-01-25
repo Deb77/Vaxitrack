@@ -1,4 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as childrenActionCreators from '../../actions/children';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {
@@ -16,15 +20,17 @@ import {
     RadioButton
 } from './ParentFormElements';
 
-const ParentForm = () => {
+const ParentForm = ({ parentId, childrenActions }) => {
     const [name, setName] = useState("");
     const [DOB, setDOB] = useState(new Date());
     const [gender, setGender] = useState("");
 
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log({ name, gender, DOB });
+        const formData = ({ name, gender, DOB, parentId });
+        childrenActions.addChild(formData);
     }
+
     return (
         <FormContainer>
             <Title>You have not registered any
@@ -73,4 +79,17 @@ const ParentForm = () => {
     )
 }
 
-export default ParentForm
+ParentForm.propType = {
+    parentId: PropTypes.string,
+    children: PropTypes.array,
+    childrenActions: PropTypes.object
+}
+
+
+const mapStateToProps = ({ auth }) => ({ parentId: auth.user })
+
+const mapDispatchToProps = dispatch => ({
+    childrenActions: bindActionCreators(childrenActionCreators, dispatch)
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ParentForm)

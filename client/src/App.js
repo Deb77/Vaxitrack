@@ -16,6 +16,8 @@ import Parent from './pages/Parent';
 import Doctor from './pages/Doctor';
 import Child from './pages/Child';
 import Admin from './pages/Admin';
+import Alert from './components/Alerts'
+import Header from './components/Header';
 
 const options = {
   timeout: 3000,
@@ -29,6 +31,8 @@ const App = () => {
       <AlertProvider template={AlertTemplate}{...options}>
         <Router>
           <Theme>
+            <Alert />
+            <Header/>
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/login" component={Login} />

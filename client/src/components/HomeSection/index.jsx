@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from '../DiscoverSection/CardElements';
+import { Button } from '../Card/CardElements';
 import { HomeContainer, Text, Subtext } from './HomeSectionElements';
 
 const HomeSection = () => {

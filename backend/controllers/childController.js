@@ -38,7 +38,7 @@ module.exports.child_update = async (req, res) => {
 
 module.exports.children_get = async (req, res) => {
     try {
-        const children = await Child.find(req.body);
+        const children = await Child.find({ parentId: req.body.parentId });
         res.status(201).json( children )
     }
     catch(err){
