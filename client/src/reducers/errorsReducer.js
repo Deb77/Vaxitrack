@@ -1,4 +1,4 @@
-import { GET_ERRORS } from '../constants/errors';
+import { CREATE_ERROR, RESET_ERRORS } from '../constants/errors';
 
 const initialState = {
     msg: "",
@@ -7,11 +7,13 @@ const initialState = {
 
 const errorsReducer = (state = initialState, { type, payload }) => {
     switch (type) {
-        case GET_ERRORS:
+        case CREATE_ERROR:
             return {
                 msg: payload.msg,
                 status: payload.status
-            }
+            };
+        case RESET_ERRORS:
+            return initialState;
         default:
             return state;
     }

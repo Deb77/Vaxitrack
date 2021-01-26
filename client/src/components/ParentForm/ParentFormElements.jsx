@@ -35,3 +35,23 @@ export const RadioButton = styled.input.attrs({
 })`
 margin: 10px;
 `
+
+export const CloseButton = styled.p`
+    margin: 2%;
+    font-size: 2rem;
+    min-width: 1100px;
+    text-align: center;
+    cursor: pointer;
+
+    @media screen and ( max-width: 1150px ){
+        min-width: 800px;
+    }
+
+    @media screen and ( max-width: 850px ){
+        min-width: 600px;
+    }
+
+    @media screen and ( max-width: 650px ){
+        min-width: 0px;
+    }
+`

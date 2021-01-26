@@ -17,10 +17,11 @@ import {
     Title,
     Text,
     RadioButtonContainer,
-    RadioButton
+    RadioButton,
+    CloseButton
 } from './ParentFormElements';
 
-const ParentForm = ({ parentId, childrenActions }) => {
+const ParentForm = ({ modal, closeModal, parentId, childrenActions }) => {
     const [name, setName] = useState("");
     const [DOB, setDOB] = useState(new Date());
     const [gender, setGender] = useState("");
@@ -33,10 +34,14 @@ const ParentForm = ({ parentId, childrenActions }) => {
 
     return (
         <FormContainer>
-            <Title>You have not registered any
-            children, please enter the following
-            details to register your child.
-            </Title>
+            {modal ?
+                <CloseButton onClick={closeModal}>X</CloseButton>
+                :
+                <Title>You have not registered any
+                children, please enter the following
+                details to register your child.
+                </Title>
+            }
             <Form user onSubmit={onSubmit}>
                 <TextField
                     placeholder="Enter child's name"
@@ -80,11 +85,11 @@ const ParentForm = ({ parentId, childrenActions }) => {
 }
 
 ParentForm.propType = {
+    modal: PropTypes.bool,
+    closeModal: PropTypes.func,
     parentId: PropTypes.string,
-    children: PropTypes.array,
     childrenActions: PropTypes.object
 }
-
 
 const mapStateToProps = ({ auth }) => ({ parentId: auth.user })
 

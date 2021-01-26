@@ -1,10 +1,10 @@
 import {
     GET_ALL_CHILDREN,
-    ADD_NEW_CHILD,
     UPDATE_CHILD_INFO,
     DELETE_CHILD_RECORD,
 } from '../constants/children';
-import { GET_ERRORS } from '../constants/errors'
+import { CREATE_MESSAGE } from '../constants/messages';
+import { CREATE_ERROR, RESET_ERRORS } from '../constants/errors'
 import { childService } from '../services/childService';
 
 export const fetchChildren = body => dispatch =>
@@ -21,26 +21,29 @@ export const fetchChildren = body => dispatch =>
                 status: err.response.status
             }
             dispatch({
-                type: GET_ERRORS,
+                type: CREATE_ERROR,
                 payload: errors
             })
         })     
 
 export const addChild = body => dispatch => 
     childService.post('', body)
-        .then(res => 
+        .then(res => {
             dispatch({
-                type: ADD_NEW_CHILD,
+                type: CREATE_MESSAGE,
                 payload: res.data
             })
-        )
+            dispatch({
+                type: RESET_ERRORS
+            })
+        })
         .catch(err => {
             const errors = {
-                msg: err.response.data,
+                msg: err.response.data.errors,
                 status: err.response.status
             }
             dispatch({
-                type: GET_ERRORS,
+                type: CREATE_ERROR,
                 payload: errors
             })
         })
@@ -59,7 +62,7 @@ export const updateChild = body => dispatch =>
                 status: err.response.status
             }
             dispatch({
-                type: GET_ERRORS,
+                type: CREATE_ERROR,
                 payload: errors
             })
         })
@@ -78,7 +81,7 @@ export const deleteChild = body => dispatch =>
                 status: err.response.status
             }
             dispatch({
-                type: GET_ERRORS,
+                type: CREATE_ERROR,
                 payload: errors
             })
         })
