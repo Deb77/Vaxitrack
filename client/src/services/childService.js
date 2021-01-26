@@ -17,4 +17,4 @@ function put(apiEndpoint, payload) {
 
 function del (apiEndpoint, payload){
     return axios.delete(baseUrl + 'child/' + apiEndpoint + payload.id);
-}
+}  
