@@ -1,15 +1,11 @@
 import styled, {css} from 'styled-components'
 import { Link } from 'react-router-dom'
-import HomeImage from '../assets/Home.jpg'
 
 export const FormContainer = styled.div`
-    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-        url(${HomeImage})
-        no-repeat center fixed;
-        background-size: cover;
-        height: 100%;
     height: 100vh;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     padding: 10% 0;
     color: #fff;

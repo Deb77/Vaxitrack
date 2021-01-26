@@ -12,7 +12,6 @@ const childSchema = Schema({
     },
     DOB: {
         type: Date,
-        default: Date.now(),
         required: [true, "Please enter child's date of birth"]
     },
     gender: {

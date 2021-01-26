@@ -77,7 +77,7 @@ Login.propTypes = {
     errors: PropTypes.object
 }
 
-const mapStateToProps = ({ auth }) => ({ auth: auth.isAuthenticated, errors: auth.errors });
+const mapStateToProps = ({ auth }) => ({ auth: auth.isAuthenticated, errors: auth.loginErrors });
 
 const mapDispatchToProps = dispatch => ({
     authActions: bindActionCreators(authActionCreators, dispatch)

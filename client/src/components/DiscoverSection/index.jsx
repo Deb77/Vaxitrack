@@ -2,7 +2,7 @@ import React from 'react'
 import { Title, Underline, TitleBody } from '../SectionElements';
 import { DiscoverContainer, Grid } from "./DiscoverSectionElements";
 import { Diseases } from '../../utils/DiseasesData';
-import Card from './Card';
+import Card from '../Card';
 
 const DiscoverSection = () => {
     return (
@@ -14,7 +14,12 @@ const DiscoverSection = () => {
             </TitleBody>
             <Grid>
                 {Diseases.map(({ title, description, link }, k) =>
-                    <Card key={k} title={title} description={description} link={link}/>
+                    <Card key={k}
+                        title={title}
+                        description={description}
+                        link={link}
+                        btnText={"Learn More"}
+                    />
                 )}   
             </Grid>
         </DiscoverContainer>

@@ -12,7 +12,8 @@ const initialState = {
     token,
     user: localStorage.getItem('user'),
     isAuthenticated: token ? true : false,
-    errors: {},
+    loginErrors: {},
+    singupErrors: {}
 };
 
 const authReducer = (state = initialState, { type, payload }) => {
@@ -25,13 +26,13 @@ const authReducer = (state = initialState, { type, payload }) => {
                 token: payload.token,
                 user: payload.user,
                 isAuthenticated: true,
-                errors: {}
+                signupErrors: {}
             }
         case SIGNUP_FAIL:
             return {
                 ...state,
                 isAuthenticated:false,
-                errors: payload.errors
+                signupErrors: payload.errors
             }
         case LOGIN_SUCCESS:
             localStorage.setItem('token', payload.token);
@@ -41,13 +42,13 @@ const authReducer = (state = initialState, { type, payload }) => {
                 token: payload.token,
                 user: payload.user,
                 isAuthenticated: true,
-                errors: {},
+                loginErrors: {},
             }
         case LOGIN_FAIL:
             return {
                 ...state,
                 isAuthenticated: false,
-                errors: payload.errors,
+                loginErrors: payload.errors,
             }
         case LOGOUT:
             localStorage.removeItem('token');
@@ -55,7 +56,8 @@ const authReducer = (state = initialState, { type, payload }) => {
                 token: null,
                 user: null,
                 isAuthenticated: false,
-                errors:{}           
+                loginErrors: {},
+                signupErrors: {}
             }
         default: return state;
     }

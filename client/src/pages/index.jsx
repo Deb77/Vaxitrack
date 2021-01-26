@@ -7,7 +7,7 @@ import AboutSection from '../components/AboutSection';
 import DiscoverSection from '../components/DiscoverSection';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer'; 
-import HomeImage from '../assets/Home.jpg'
+import HomeImage from '../assets/Home.jpg';
 
 const Home = () => {
     const [isOpen, setIsOpen] = useState(false);
