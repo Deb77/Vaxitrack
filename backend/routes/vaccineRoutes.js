@@ -3,6 +3,8 @@ const vaccineController = require('../controllers/vaccineController');
 
 const router = Router();
 
-router.put('/:id', vaccineController.vaccine_update);
+router
+    .post('/', vaccineController.vaccine_post)
+    .put('/:id', vaccineController.vaccine_update);
 
 module.exports = router; 

@@ -42,7 +42,9 @@ const ChildrenDisplay = ({ children }) => {
                         title={child.name}
                         DOB={child.DOB}
                         gender={child.gender}
+                        id={child._id}
                         btnText={"Check Vaccines"}
+                        child={true}
                     />)}
             </Grid>
             <AddIcon>
