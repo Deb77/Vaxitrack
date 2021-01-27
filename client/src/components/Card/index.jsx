@@ -1,14 +1,33 @@
 import React from 'react'
 import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as childrenActionCreators from '../../actions/children';
 import {
     CardContainer,
     CardTitle,
     CardBody,
     BtnWrapper,
     Button,
+    BtnLink
 } from './CardElements';
 
-const Card = ({ title, description, link, gender, DOB, btnText }) => {
+const Card = ({
+    title,
+    description,
+    link,
+    id,
+    gender,
+    DOB,
+    btnText,
+    child,
+    childrenActions
+}) => {
+    
+    const onClick = () => {
+        childrenActions.setSelected(id);
+    }
+
     return (
         <CardContainer>
             <div>
@@ -22,9 +41,18 @@ const Card = ({ title, description, link, gender, DOB, btnText }) => {
                 </CardBody>
             </div>
             <BtnWrapper>
-                <Button href={link} target="_blank">
-                    {btnText}
-                </Button>
+                {child ?
+                    (
+                        <BtnLink onClick={onClick} to='/parent/child'>
+                            {btnText}
+                        </BtnLink>
+                    )
+                    :
+                    (
+                        <Button href={link} target="_blank">
+                            {btnText}
+                        </Button>                        
+                    )}
             </BtnWrapper>
         </CardContainer>
     )
@@ -33,7 +61,16 @@ const Card = ({ title, description, link, gender, DOB, btnText }) => {
 Card.propTypes = {
     title: PropTypes.string,
     description: PropTypes.string,
-    link: PropTypes.string
+    link: PropTypes.string,
+    gender: PropTypes.string,
+    DOB: PropTypes.string,
+    btnText: PropTypes.string,
+    child: PropTypes.bool,
+    childrenActions: PropTypes.object
 }
 
-export default Card
+const mapDispatchToProps = dispatch => ({
+    childrenActions: bindActionCreators(childrenActionCreators, dispatch)
+})
+
+export default connect(null, mapDispatchToProps)(Card);

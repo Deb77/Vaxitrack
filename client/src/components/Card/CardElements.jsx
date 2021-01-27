@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const CardContainer = styled.div`
     display: flex;
@@ -46,7 +47,7 @@ export const BtnWrapper = styled.div`
     justify-content: flex-end;
 `
 
-export const Button = styled.a`
+const sharedStyle = css`
     text-decoration: none;
     text-align: center;
     font-weight: 600;
@@ -63,8 +64,16 @@ export const Button = styled.a`
     }
 
     ${CardContainer}:hover & {
-    color: ${props=> props.theme.colors.primary};
-    border: 1px solid ${props=> props.theme.colors.primary};
-    text-decoration: none;
+        color: ${props=> props.theme.colors.primary};
+        border: 1px solid ${props=> props.theme.colors.primary};
+        text-decoration: none;
     }
+`
+
+export const Button = styled.a`
+    ${sharedStyle}
+`
+
+export const BtnLink = styled(Link)`
+    ${sharedStyle}
 `
