@@ -29,7 +29,10 @@ const Alerts = ({ errors, messages }) => {
 }
 
 Alerts.propTypes = {
-    errors: PropTypes.object
+    errors: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.object
+    ])
 }
 
 const mapStateToProps = ({ errors, messages }) => ({ errors: errors.msg, messages });

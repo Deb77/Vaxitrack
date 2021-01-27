@@ -7,7 +7,7 @@ router
     .post('/', childController.child_post)
     .put('/:id', childController.child_update)
     .delete('/:id', childController.child_delete)
-    .post('/children', childController.children_get);
+    .post('/children', childController.children_post);
 
 module.exports = router;
 

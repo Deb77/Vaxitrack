@@ -52,7 +52,7 @@ const ChildrenDisplay = ({ children }) => {
                 isOpen={isOpen}
                 onRequestClose={closeModal}
                 style={customStyles}
-                contentLabel="Example Modal"
+                ariaHideApp={false}
             >
                 <ParentForm closeModal={closeModal} modal={true}/>
             </Modal>
