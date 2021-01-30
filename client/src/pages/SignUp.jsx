@@ -39,17 +39,17 @@ const Login = ({ authActions, auth, errors }) => {
                             placeholder="Enter name..."
                             onChange={(e) => setName(e.target.value)}
                         />
-                        <Error>{errors.name}</Error>
+                        <Error>{errors && errors.name}</Error>
                         <TextField
                             placeholder="Enter email..."
                             onChange={(e) => setEmail(e.target.value)}
                         />
-                        <Error>{errors.email}</Error>
+                        <Error>{errors && errors.email}</Error>
                         <PasswordField
                             placeholder="Enter password"
                             onChange={(e) => setPassword(e.target.value)}
                         />
-                        <Error>{errors.password}</Error>
+                        <Error>{errors && errors.password}</Error>
                         <Button user={true} variant="primary" type="submit">
                             Submit
                         </Button>

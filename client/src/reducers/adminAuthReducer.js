@@ -4,12 +4,11 @@ import {
     ADMIN_LOGOUT
 } from '../constants/adminAuth';
 
-const adminToken = localStorage.getItem('admin');
+const token = localStorage.getItem('admin');
 
 const initialState = {
-    adminToken,
-    adminUser: localStorage.getItem('doctor'),
-    isAuthenticated: adminToken ? true : false,
+    token,
+    isAuthenticated: token ? true : false,
     errors: {},
 };
 
@@ -17,11 +16,9 @@ const authReducer = (state = initialState, { type, payload }) => {
     switch (type) {
         case ADMIN_LOGIN_SUCCESS:
             localStorage.setItem('admin', payload.token);
-            localStorage.setItem('doctor', payload.user);
             return {
                 ...state,
                 token: payload.token,
-                user: payload.user,
                 isAuthenticated: true,
                 errors: {},
             }
@@ -35,7 +32,6 @@ const authReducer = (state = initialState, { type, payload }) => {
             localStorage.removeItem('admin');
             return {
                 token: null,
-                user: null,
                 isAuthenticated: false,
                 errors:{}             
             }
