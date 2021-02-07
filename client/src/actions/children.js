@@ -29,6 +29,26 @@ export const fetchChildren = body => dispatch =>
             })
         })     
 
+export const fetchAllChildren = () => dispatch =>
+    childService.get('allchildren')
+        .then(res => {
+            dispatch({
+                type: GET_ALL_CHILDREN,
+                payload: res.data
+            })
+        }
+        )
+        .catch(err => {
+            const errors = {
+                msg: err.response.data,
+                status: err.response.status
+            }
+            dispatch({
+                type: CREATE_ERROR,
+                payload: errors
+            })
+        })  
+        
 export const fetchVaccines = body => dispatch =>
     vaccineService.post('', body)
         .then(res => {

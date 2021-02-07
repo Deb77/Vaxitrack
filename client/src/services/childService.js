@@ -2,11 +2,15 @@ import axios from 'axios';
 import { baseUrl } from '../config/config';
 
 export const childService = {
+    get,
     post,
     put,
     del
 }
 
+function get(apiEndpoint) {
+    return axios.get(baseUrl + 'child/' + apiEndpoint)
+}
 function post(apiEndpoint, payload) {
     return axios.post(baseUrl + 'child/'+apiEndpoint,payload)
 }

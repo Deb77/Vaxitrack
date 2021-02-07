@@ -21,6 +21,7 @@ const Card = ({
     DOB,
     btnText,
     child,
+    childRoute,
     childrenActions
 }) => {
     
@@ -43,7 +44,7 @@ const Card = ({
             <BtnWrapper>
                 {child ?
                     (
-                        <BtnLink onClick={onClick} to='/parent/child'>
+                        <BtnLink onClick={onClick} to={childRoute}>
                             {btnText}
                         </BtnLink>
                     )
@@ -69,8 +70,10 @@ Card.propTypes = {
     childrenActions: PropTypes.object
 }
 
+const mapStateToProps = ({ adminAuth }) => ({ admin: adminAuth.isAuthenticated });
+
 const mapDispatchToProps = dispatch => ({
     childrenActions: bindActionCreators(childrenActionCreators, dispatch)
 })
 
-export default connect(null, mapDispatchToProps)(Card);
+export default connect(mapStateToProps, mapDispatchToProps)(Card);
