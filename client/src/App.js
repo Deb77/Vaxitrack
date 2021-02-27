@@ -13,9 +13,9 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import PasswordReset from './pages/PasswordReset';
 import Parent from './pages/Parent';
-import Doctor from './pages/Doctor';
 import Child from './pages/Child';
 import Admin from './pages/Admin';
+import AdminHome from './pages/AdminHome';
 import Alert from './components/Alerts'
 import Header from './components/Header';
 
@@ -41,7 +41,7 @@ const App = () => {
               <Route exact path="/reset/:token" component={PasswordReset} />
               <ParentPrivateRoute exact path="/parent" component={Parent} />
               <ParentPrivateRoute exact path="/parent/child" component={Child} />
-              <AdminPrivateRoute exact path="/admin/home" component={Doctor} />
+              <AdminPrivateRoute exact path="/admin/home" component={AdminHome} />
               <AdminPrivateRoute exact path="/admin/child" component={Child} />
             </Switch>
           </Theme>

@@ -3,10 +3,10 @@ import {
     ADMIN_LOGIN_FAIL,
     ADMIN_LOGOUT
 } from '../constants/adminAuth';
-import { userService } from '../services/userService';
+import { adminService } from '../services/adminService';
 
 export const login = body => dispatch => 
-    userService.post('doctor/login', body)
+    adminService.post('login', body)
         .then(res =>
             dispatch({
                 type: ADMIN_LOGIN_SUCCESS,

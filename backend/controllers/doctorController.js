@@ -12,6 +12,21 @@ const handleErrors = (err) => {
     return errors;
 }
 
+module.exports.signup_post = async(req, res) => {
+    try {
+        const { username, password } = req.body;
+        await Doctor.create({
+            username,
+            password
+        });
+        res.status(201).json("User created successfully");
+    }
+    catch (err) {
+        const erros = handleErrors(err);
+        res.status(400).json({ errors: erros });
+    }
+};
+
 module.exports.login_post = async (req, res) => {
     const { username, password } = req.body;
     try {

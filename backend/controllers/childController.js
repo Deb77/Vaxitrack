@@ -46,6 +46,16 @@ module.exports.children_post = async (req, res) => {
     }
 }
 
+module.exports.children_all_get = async (req, res) => {
+    try {
+        const children = await Child.find({});
+        res.status(201).json( children )
+    }
+    catch(err){
+        res.status(400).json("You don't have any children registered/There is connection problem");
+    }
+}
+
 module.exports.child_delete = async (req, res) => {
     try {
         await Child.findByIdAndDelete(req.params.id);

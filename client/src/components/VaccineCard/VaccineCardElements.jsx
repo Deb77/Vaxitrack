@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { GiLoveInjection } from 'react-icons/gi';
+import { MdModeEdit } from 'react-icons/md';
 
 export const CardContainer = styled.div`
     display: flex;
@@ -19,6 +20,14 @@ export const Icon = styled(GiLoveInjection)`
     width: 50px;
     padding:10px;
     background-color: #000;
+`
+
+export const EditIcon = styled(MdModeEdit)`
+    cursor: pointer;
+    height: 25px;
+    margin: 0 10px;
+    width: 25px;
+    color: red;
 `
 
 export const CardTitle = styled.div`
@@ -43,4 +52,18 @@ export const Box = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+`
+
+export const CloseButton = styled.span`
+    color: red;
+    background: #f1f1f1;
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 50%;
+    cursor: pointer;
+`
+
+export const CloseButtonContainer = styled.div`
+    display: flex;
+    justify-content: flex-end;
 `

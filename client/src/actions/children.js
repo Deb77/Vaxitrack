@@ -2,7 +2,6 @@ import {
     GET_ALL_CHILDREN,
     SET_SELECTED_CHILD,
     SET_VACCINE_LIST,
-    UPDATE_CHILD_INFO,
     DELETE_CHILD_RECORD,
 } from '../constants/children';
 import { CREATE_MESSAGE } from '../constants/messages';
@@ -29,6 +28,26 @@ export const fetchChildren = body => dispatch =>
             })
         })     
 
+export const fetchAllChildren = () => dispatch =>
+    childService.get('allchildren')
+        .then(res => {
+            dispatch({
+                type: GET_ALL_CHILDREN,
+                payload: res.data
+            })
+        }
+        )
+        .catch(err => {
+            const errors = {
+                msg: err.response.data,
+                status: err.response.status
+            }
+            dispatch({
+                type: CREATE_ERROR,
+                payload: errors
+            })
+        })  
+        
 export const fetchVaccines = body => dispatch =>
     vaccineService.post('', body)
         .then(res => {
@@ -79,25 +98,6 @@ export const addChild = body => dispatch =>
             })
         })
         
-export const updateChild = body => dispatch => 
-    childService.put(`${body.id}`)
-        .then(res =>
-            dispatch({
-                type: UPDATE_CHILD_INFO,
-                payload: res.data
-            })
-        )
-        .catch(err => {
-            const errors = {
-                msg: err.response.data,
-                status: err.response.status
-            }
-            dispatch({
-                type: CREATE_ERROR,
-                payload: errors
-            })
-        })
-    
 export const deleteChild = body => dispatch => 
     childService.put(`${body.id}`)
         .then(res =>

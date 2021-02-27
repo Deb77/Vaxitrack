@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 import { BsPlusCircleFill } from 'react-icons/bs';
@@ -8,9 +8,19 @@ import Title from '../Heading';
 import Card from '../Card';
 import ParentForm from '../ParentForm';
 
-const ChildrenDisplay = ({ children }) => {
+const ChildrenDisplay = ({
+    children,
+    admin
+}) => {
     const [isOpen, setIsOpen] = useState(false);
+    const [childRoute, setChildRoute] = useState('/parent/child');
 
+    useEffect(() => {
+        if (admin) {
+            setChildRoute('/admin/child');
+        }
+    }, [admin])
+    
     const openModal = () => {
         setIsOpen(true);
     }
@@ -45,6 +55,7 @@ const ChildrenDisplay = ({ children }) => {
                         id={child._id}
                         btnText={"Check Vaccines"}
                         child={true}
+                        childRoute={childRoute}
                     />)}
             </Grid>
             <AddIcon>
