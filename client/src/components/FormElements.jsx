@@ -103,3 +103,8 @@ export const PasswordLink = styled.p`
     ${sharedStyle2}
     cursor: pointer;
 `
+
+export const Label = styled.label`
+    margin: 10px 0;
+    color: ${props => props.theme.colors.primary}
+`

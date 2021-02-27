@@ -16,7 +16,6 @@ const ContactSection = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log(name, email, subject, message);
         setName("");
         setEmail("");
         setSubject("");

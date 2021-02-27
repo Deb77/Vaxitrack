@@ -15,7 +15,7 @@ const ChildPage = ({ selectedChild, vaccines, childrenActions }) => {
 
     useEffect(() => {
         childrenActions.fetchVaccines({ childId: selectedChild });
-    }, [childrenActions, selectedChild])
+    },[childrenActions.fetchVaccines,selectedChild])
 
     useEffect(() => {
         setAdministered(vaccines.filter(({ administeredOn }) => administeredOn !== null))
@@ -29,8 +29,10 @@ const ChildPage = ({ selectedChild, vaccines, childrenActions }) => {
             <Grid>
                 {
                     notAdministered.map(({
-                        name, whenToGive, dueDate, administeredOn
+                        _id,name, whenToGive, dueDate, administeredOn
                     }) => <VaccineCard
+                            key={_id}
+                            vaccineId={_id}
                             name={name}
                             description={whenToGive}
                             dueDate={dueDate}
@@ -43,8 +45,10 @@ const ChildPage = ({ selectedChild, vaccines, childrenActions }) => {
             <Grid>
                 {
                     administered.map(({
-                        name, whenToGive, dueDate, administeredOn
+                        _id, name, whenToGive, dueDate, administeredOn
                     }) => <VaccineCard
+                            key={_id}
+                            vaccineId={_id}
                             name={name}
                             description={whenToGive}
                             dueDate={dueDate}
@@ -57,7 +61,7 @@ const ChildPage = ({ selectedChild, vaccines, childrenActions }) => {
 }
 
 ChildPage.propTypes = {
-    selectedChild: PropTypes.object,
+    selectedChild: PropTypes.string,
     childrenActionCreators: PropTypes.object
 }
 

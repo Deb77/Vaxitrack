@@ -14,10 +14,11 @@ module.exports.vaccine_post = async (req, res) => {
 
 module.exports.vaccine_update = async (req, res) => {
     try {
-        await Vaccine.findByIdAndUpdate(req.params.id, req.body);
+        const { dueDate, administeredOn } = req.body;
+        await Vaccine.findByIdAndUpdate(req.params.id, { dueDate, administeredOn });
         res.status(201).json("The vaccine information has been updated successfully");
     }
     catch (err) {
-        console.log(err);
+        res.status(400).json("There was an error while updating");
     }
 }
