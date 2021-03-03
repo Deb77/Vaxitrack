@@ -1,8 +1,5 @@
 <!-- PROJECT LOGO -->
 <p align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
   <h3 align="center">Vaxitrack</h3>
   <p align="center">
     A website built to enable doctors and parents keep track of vaccination records
@@ -25,7 +22,14 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
+    <li>
+      <a href="#usage-and-screenshots">Usage and Screenshots</a>
+      <ul>
+        <li><a href="#home-page-screenshots">Home Page Screenshots</a></li>
+        <li><a href="#client-side-screenshots">Client Side Screenshots</a></li>
+        <li><a href="#admin-side-screenshots">Admin Side Screenshots</a></li>
+      </ul>
+    </li>
     <li><a href="#license">License</a></li>
   </ol>
 </details>
@@ -34,9 +38,6 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-<br/>
 This project was created keeping in mind the difficulty faced in keeping track with paper records. It is a website which helps doctors to view their patients vaccination records 
 in a systematic way and helps parents to keep a track of thier children's vaccination records, i.e, 2 different types of systems(admin and user) are implemented. 
 
@@ -83,15 +84,29 @@ Working:
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+## Usage and Screenshots
+### Home Page Screenshots
+<img src="./screenshots/HomePage1.PNG"/>
+<img src="./screenshots/HomePage2.PNG"/>
+<img src="./screenshots/HomePage3.PNG"/>
+<img src="./screenshots/HomePage4.PNG"/>
+<br>
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+### Client Side Screenshots
+<img src="./screenshots/Parent1.PNG"/>
+<img src="./screenshots/Parent2.PNG"/>
+<img src="./screenshots/Parent3.PNG"/>
+<img src="./screenshots/Parent4.PNG"/>
+<img src="./screenshots/Parent5.PNG"/>
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+### Admin Side Screenshots
+The admin side features a similar layout with an additional feature to update the vaccine infomation of a patient
+<br>
+<img src="./screenshots/Doctor1.PNG"/>
+<img src="./screenshots/Doctor2.PNG"/>
 
 <!-- LICENSE -->
 ## License
-
 Distributed under the MIT License. See `LICENSE` for more information.
 
 
