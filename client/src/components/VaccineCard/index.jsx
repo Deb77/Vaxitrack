@@ -30,20 +30,11 @@ const VaccineCard = ({
 }) => {
     const [modalIsOpen, setIsOpen] = useState(false);
     const [due, setDue] = useState();
-    const [administeredDate, setAdministeredDate] = useState(new window.Date());
+    const [administeredDate, setAdministeredDate] = useState();
 
     useEffect(() => {
-        administeredOn
-            ?
-            setAdministeredDate(new window.Date(administeredOn))
-            :
-            setAdministeredDate(new window.Date())
-        
-        dueDate
-            ?
-            setDue(new window.Date(dueDate))
-            :
-            setDue(new window.Date())
+        administeredOn&&setAdministeredDate(new window.Date(administeredOn))        
+        dueDate&&setDue(new window.Date(dueDate))
     }, [administeredOn, dueDate])
     
     const openModal = () => setIsOpen(true);

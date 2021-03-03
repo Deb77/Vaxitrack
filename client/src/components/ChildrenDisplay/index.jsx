@@ -58,9 +58,11 @@ const ChildrenDisplay = ({
                         childRoute={childRoute}
                     />)}
             </Grid>
-            <AddIcon>
-                <BsPlusCircleFill onClick={openModal}/>
-            </AddIcon>
+            {!admin &&
+                (<AddIcon>
+                    <BsPlusCircleFill onClick={openModal} />
+                </AddIcon>)
+            }
             <Modal
                 isOpen={isOpen}
                 onRequestClose={closeModal}

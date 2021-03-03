@@ -26,23 +26,28 @@ const ChildPage = ({ selectedChild, vaccines, childrenActions }) => {
         <Container>
             <Heading>Pending Vaccines</Heading>
             <Underline/>
-            <Grid>
-                {
-                    notAdministered.map(({
-                        _id,name, whenToGive, dueDate, administeredOn
-                    }) => <VaccineCard
-                            key={_id}
-                            vaccineId={_id}
-                            name={name}
-                            description={whenToGive}
-                            dueDate={dueDate}
-                            administeredOn={administeredOn}
-                        />)
-                }
-            </Grid>
+            {
+                notAdministered.length > 0 ?
+                    (<Grid>
+                        {
+                            notAdministered.map(({
+                                _id, name, whenToGive, dueDate, administeredOn
+                            }) => <VaccineCard
+                                    key={_id}
+                                    vaccineId={_id}
+                                    name={name}
+                                    description={whenToGive}
+                                    dueDate={dueDate}
+                                    administeredOn={administeredOn}
+                                />)
+                        }
+                    </Grid>)
+                    :
+                    <p style={{ color: "gray", textAlign: "center" }}>All vaccines have been administered</p>
+            }
             <Heading>Already Administered</Heading>
             <Underline/>
-            <Grid>
+            {administered.length > 0 ? (<Grid>
                 {
                     administered.map(({
                         _id, name, whenToGive, dueDate, administeredOn
@@ -55,7 +60,8 @@ const ChildPage = ({ selectedChild, vaccines, childrenActions }) => {
                             administeredOn={administeredOn}
                         />)
                 }
-            </Grid>
+            </Grid>) : <p style={{ color: "gray", textAlign: "center" }}>No Vaccines have been administered</p>
+            }
         </Container>
     )
 }
