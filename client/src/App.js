@@ -1,5 +1,9 @@
 import './App.css';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from "react-router-dom";
 import { Provider } from 'react-redux';
 import { Provider as AlertProvider } from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
@@ -25,7 +29,7 @@ const options = {
   type: 'error'
 }
 
-const App = () => {
+const App = () => {  
   return (
     <Provider store={store}>
       <AlertProvider template={AlertTemplate}{...options}>

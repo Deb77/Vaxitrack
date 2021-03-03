@@ -15,7 +15,7 @@ const ChildPage = ({ selectedChild, vaccines, childrenActions }) => {
 
     useEffect(() => {
         childrenActions.fetchVaccines({ childId: selectedChild });
-    },[childrenActions.fetchVaccines,selectedChild])
+    },[childrenActions,selectedChild])
 
     useEffect(() => {
         setAdministered(vaccines.filter(({ administeredOn }) => administeredOn !== null))
