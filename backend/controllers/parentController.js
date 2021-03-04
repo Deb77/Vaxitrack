@@ -33,7 +33,8 @@ const handleErrors = (err) => {
 
 module.exports.signup_post = async(req, res) => {
     try {
-        const parent = await Parent.create(req.body);
+        const { name, email, password } = req.body;
+        const parent = await Parent.create({name, email, password});
         const token = authToken.createToken(parent);
         res.status(201).json({ token: token, user: parent._id });
     }

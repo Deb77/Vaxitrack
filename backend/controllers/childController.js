@@ -14,7 +14,8 @@ const handleErrors = (err) => {
 
 module.exports.child_post = async(req, res) => {
     try {
-        const child = await Child.create(req.body);
+        const { name, gender, DOB, parentId } = req.body;
+        const child = await Child.create({ name, gender, DOB, parentId });
         VaccineList.forEach(async ({ name, whenToGive }) => {
             await Vaccine.create({ name, whenToGive, child: child._id })
         })
