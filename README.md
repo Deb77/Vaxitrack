@@ -38,7 +38,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-This project was created keeping in mind the difficulty faced in keeping track with paper records. It is a website which helps doctors to view their patients vaccination records 
+This project was created keeping in mind the difficulty faced in tracking with paper records. Vaxitrack is a website which helps doctors view their patients vaccination records 
 in a systematic way and helps parents to keep a track of thier children's vaccination records, i.e, 2 different types of systems(admin and user) are implemented. 
 
 Working:
